@@ -1,0 +1,28 @@
+{
+    
+    "pollenAlder": "Or",    
+    "pollenHazel": "Hassel",    
+    "pollenSalix":"Salix", 
+    "pollenBirch":"Bjørk",
+    "pollenGrass":"Gress",
+    "pollenMugworth":"Burot",
+    "pollenPitchambrosia":"Beiskambrosia",
+    "pollenPine":"Gran/Furu",
+    "pollenAir":"Luft",
+
+    "dateToday":"I dag",
+    "dateTomorrow":"I morgen",
+    "dateMonday":"Mandag",
+    "dateTuesday":"Tirsdag",
+    "dateWedensday":"Onsdag",
+    "dateThursday":"Torsdag",
+    "dateFriday":"Fredag",
+    "dateSaturday":"Lørdag",
+    "dateSunday":"Søndag",
+
+    "placeSearch": "Søk her..",
+
+    "airQualityExcelent":"Veldig bra",
+    "airQualityIntermediate":"Ok",
+    "airQualityPoor":"Dårlig"
+}

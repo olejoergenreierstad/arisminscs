@@ -1,0 +1,28 @@
+{   "pollenAlder": "Alder",    
+    "pollenHazel": "Hazel",    
+    "pollenSalix": "Salix",
+    "pollenBirch": "Birch",    
+    "pollenGrass":"Grass",
+    "pollenMugworth":"Mugworth",
+    "pollenPitchambrosia":"Pitch ambrosia",
+    "pollenPine":"Spruce/Pine",
+    "pollenAir":"Air",
+
+    "dateToday":"Today",
+    "dateTomorrow":"Tomrrow",
+    "dateMonday":"Monday",
+    "dateTuesday":"Tuesday",
+    "dateWedensday":"Wedensday",
+    "dateThursday":"Thursday",
+    "dateFriday":"Friday",
+    "dateSaturday":"Saturday",
+    "dateSunday":"Sunday",
+
+    "placeSearch": "Search",
+
+    "airQualityExcelent":"Excellent",
+    "airQualityIntermediate":"Ok",
+    "airQualityPoor":"Poor"
+
+   
+}
