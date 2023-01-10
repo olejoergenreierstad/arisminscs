@@ -21,7 +21,7 @@ class PlaceDetailMain extends StatefulWidget {
 }
 
 class _PlaceDetailMainState extends State<PlaceDetailMain> {
-  WeatherFactory wf = WeatherFactory(dotenv.env['openWeather']!);
+  WeatherFactory wf = WeatherFactory("44ddaf1f63412f021f54f93765c81a44");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +65,7 @@ class _PlaceDetailMainState extends State<PlaceDetailMain> {
                                   )),
                                 ),
                               )
-                            : SizedBox(
+                            : const SizedBox(
                                 width: 30,
                               ),
                         Text(
@@ -163,7 +163,7 @@ class TimeLine extends StatelessWidget {
           } else {
             endcolor = Colors.red;
           }
-          Widget newDayText = Text('I dag');
+          Widget newDayText = const Text('I dag');
 
           if (currentday == weatherForecast[index].date!.day) {
             newDayText = SizedBox(

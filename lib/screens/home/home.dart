@@ -162,7 +162,7 @@ class _MainMenuState extends State<MainMenu> {
           labelColor: Theme.of(context).colorScheme.primary,
           unselectedLabelColor: Colors.grey,
           indicator: UnderlineTabIndicator(
-            insets: const EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 10.0),
+            insets: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
             borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.primary, width: 2),
           ),
@@ -175,7 +175,7 @@ class _MainMenuState extends State<MainMenu> {
             ),
             Tab(
               icon: Icon(
-                Icons.map,
+                Icons.location_on_outlined,
               ),
               iconMargin: EdgeInsets.all(1),
             ),

@@ -181,7 +181,7 @@ class PollenReportTile extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     int totalAirquality;
     totalAirquality = getTotalAirquality(testPollenData);
-    Widget weatherWidget;
+
     return Padding(
         padding: const EdgeInsets.only(left: 20, top: 10),
         child: GestureDetector(

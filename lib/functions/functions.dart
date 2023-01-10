@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:weather/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String getPollentypeTranslation({context, required PollenType pollentype}) {
   String result = "";
@@ -71,7 +70,6 @@ Future<Widget> getWeather(
     size: 20,
   );
 
-  // List<Weather> forecast = [];
   List<Weather> forecast = [];
   if (index > 0) {
     forecast = await wf.fiveDayForecastByCityName(place);

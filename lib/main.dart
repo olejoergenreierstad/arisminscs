@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:AirmineStudy/provider/theme_provider.dart';
-import 'package:AirmineStudy/screens/Profile/profile.dart';
+
 import 'package:AirmineStudy/screens/home/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

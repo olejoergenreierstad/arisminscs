@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:AirmineStudy/functions/functions.dart';
 import 'package:AirmineStudy/models/placemodels.dart';
 import 'package:AirmineStudy/screens/home/homecontroller.dart';
 import 'package:flutter/material.dart';

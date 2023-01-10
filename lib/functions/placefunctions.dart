@@ -1,10 +1,8 @@
 import 'package:AirmineStudy/models/placemodels.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_place/google_place.dart';
 
 Future<TextSearchResponse> getPlace({required String pos}) async {
-  var googlePlace = GooglePlace(dotenv.env['google_api_key']!);
+  var googlePlace = GooglePlace("AIzaSyBETUMiohFIuDJrgXAZt14z3Sbw07WEOCg");
 
   var result = await googlePlace.search.getTextSearch(pos);
 
@@ -15,14 +13,13 @@ Future<List<PlacePredictions>> getSearchResultsFromQuery(String query) async {
   List<PlacePredictions> searchresult = [];
 
   if (query.isNotEmpty) {
-    var googlePlace = GooglePlace(dotenv.env['google_api_key']!);
+    var googlePlace = GooglePlace("AIzaSyBETUMiohFIuDJrgXAZt14z3Sbw07WEOCg");
 
     var result = await googlePlace.autocomplete.get(
       query,
       language: "no",
       region: "no",
-      // strictbounds: true,
-      radius: 10000,
+      // radius: 10000,
     );
 
     searchresult.clear();
