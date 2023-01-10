@@ -1,15 +1,7 @@
 
-A new Flutter project.
+Casestudy for en pollen varslings app.
 
-## Getting Started
+Skrevet i flutter.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Pull og kjør så bør det fungere på iOS/Android og web.
+Kart plugin jeg har brukt for heatmaps kjører en gammel Android embedding, så jeg har fjernet denne funskjonen intill jeg får sett på det.
