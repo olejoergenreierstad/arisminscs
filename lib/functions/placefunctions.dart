@@ -22,15 +22,12 @@ Future<List<PlacePredictions>> getSearchResultsFromQuery(String query) async {
   if (query.isNotEmpty) {
     searchresult.clear();
 
-    if (predictions.predictions!.isNotEmpty) {
+    if (predictions.predictions.isNotEmpty) {
       for (gp.AutocompletePrediction re in predictions.predictions) {
-        //  DetailsResponse? place = await googlePlace.details.get(re.placeId!);
         PlacePredictions data2 = PlacePredictions(
           name: re.primaryText,
           address: re.secondaryText,
           placeId: re.placeId,
-          /* lat: place!.result!.geometry!.location!.lat ?? 0.0,
-          lng: place.result!.geometry!.location!.lng ?? 0.0,*/
         );
 
         searchresult.add(data2);
