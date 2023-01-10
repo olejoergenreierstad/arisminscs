@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather/weather.dart';
+import 'package:flutter_google_places_sdk/flutter_google_places_sdk.dart' as gp;
 
 class PlaceDetailMain extends StatefulWidget {
   final Place place;
@@ -68,12 +69,22 @@ class _PlaceDetailMainState extends State<PlaceDetailMain> {
                             : const SizedBox(
                                 width: 30,
                               ),
-                        Text(
-                          widget.place.customName,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w300),
+                        GestureDetector(
+                          onTap: () async {
+                            final places = gp.FlutterGooglePlacesSdk(
+                                'AIzaSyBETUMiohFIuDJrgXAZt14z3Sbw07WEOCg');
+                            final predictions = await places
+                                .findAutocompletePredictions('Tel Aviv');
+
+                            print('Result: $predictions');
+                          },
+                          child: Text(
+                            widget.place.customName,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w300),
+                          ),
                         ),
                         const SizedBox(
                           width: 30,
