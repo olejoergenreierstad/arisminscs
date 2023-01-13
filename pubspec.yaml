@@ -26,16 +26,19 @@ dependencies:
   flutter_localizations: # Add this line
     sdk: flutter
   intl: ^0.17.0
-  #google_maps_flutter_heatmap: ^0.1.1+2
+  google_maps_flutter_heatmap: ^0.1.1+2
+  google_maps_flutter_web: ^0.4.0+4
+  google_fonts: ^3.0.1
+  #google_maps_flutter: ^2.2.3
+
   get: ^4.6.5
   weather_icons: ^3.0.0
   weather: ^2.0.1
   flutter_dotenv: ^5.0.2
-  google_place: ^0.4.7
+  #google_place: ^0.4.7
   permission_handler: ^10.2.0
-  step_progress_indicator: ^1.0.2
-  timeline_tile: ^2.0.0
   flutter_google_places_sdk: ^0.3.2+2
+  step_progress_indicator: ^1.0.2
 
 dev_dependencies:
   flutter_test:

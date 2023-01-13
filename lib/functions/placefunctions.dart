@@ -1,14 +1,6 @@
 import 'package:AirmineStudy/models/placemodels.dart';
-import 'package:google_place/google_place.dart';
+
 import 'package:flutter_google_places_sdk/flutter_google_places_sdk.dart' as gp;
-
-Future<TextSearchResponse> getPlace({required String pos}) async {
-  var googlePlace = GooglePlace("AIzaSyBETUMiohFIuDJrgXAZt14z3Sbw07WEOCg");
-
-  var result = await googlePlace.search.getTextSearch(pos);
-
-  return result!;
-}
 
 Future<List<PlacePredictions>> getSearchResultsFromQuery(String query) async {
   List<PlacePredictions> searchresult = [];

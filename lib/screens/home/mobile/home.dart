@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:get/get.dart';
-import '../../widgets/commonwidgets.dart';
-import 'homecontroller.dart';
+import '../../../widgets/commonwidgets.dart';
+import '../homecontroller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomePageMain extends StatefulWidget {
-  const HomePageMain({super.key});
+import '../homecontroller.dart';
+
+class HomePageMainMobile extends StatefulWidget {
+  const HomePageMainMobile({super.key});
 
   @override
-  State<HomePageMain> createState() => _HomePageMainState();
+  State<HomePageMainMobile> createState() => _HomePageMainMobileState();
 }
 
-class _HomePageMainState extends State<HomePageMain>
+class _HomePageMainMobileState extends State<HomePageMainMobile>
     with SingleTickerProviderStateMixin {
   var homecontroller = Get.put(HomeController());
 
@@ -29,7 +31,6 @@ class _HomePageMainState extends State<HomePageMain>
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Container(
