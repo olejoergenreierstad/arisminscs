@@ -14,14 +14,14 @@ class MenuItems {
   final List<MenuItems> subItems;
 
   MenuItems({
-    required this.content,
-    required this.title,
-    required this.subItems,
+    @required this.content,
+    @required this.title,
+    @required this.subItems,
     this.specialColor = Colors.transparent,
   });
 }
 
-List<dynamic> createPages({required List<MenuItems> titles}) {
+List<dynamic> createPages({@required List<MenuItems> titles}) {
   // Add menu and pages
   int counter = 1;
   var homeWbController = Get.put(HomeWebController());

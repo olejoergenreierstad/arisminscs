@@ -14,7 +14,7 @@ class PlaceDetailMain extends StatefulWidget {
   final Place place;
   final int totalAirquality;
   const PlaceDetailMain(
-      {super.key, required this.place, required this.totalAirquality});
+      {key, @required this.place, @required this.totalAirquality});
 
   @override
   State<PlaceDetailMain> createState() => _PlaceDetailMainState();
@@ -117,7 +117,7 @@ class _PlaceDetailMainState extends State<PlaceDetailMain> {
 
 class TimeLine extends StatelessWidget {
   final List<Weather> weatherForecast;
-  const TimeLine({super.key, required this.weatherForecast});
+  const TimeLine({key, @required this.weatherForecast});
 
   @override
   Widget build(BuildContext context) {
@@ -168,12 +168,12 @@ class TimeLine extends StatelessWidget {
           }
           Widget newDayText = const Text('I dag');
 
-          if (currentday == weatherForecast[index].date!.day) {
+          if (currentday == weatherForecast[index].date.day) {
             newDayText = SizedBox(
               height: 20,
               child: Text(
                 getWeekDay(
-                    weekDay: weatherForecast[index].date!.weekday,
+                    weekDay: weatherForecast[index].date.weekday,
                     context: context),
                 style: const TextStyle(color: Colors.white),
               ),
@@ -223,8 +223,8 @@ class TimeLine extends StatelessWidget {
                         newDayText,
                         Text(
                           getFormatedTime(
-                              hour: weatherForecast[index].date!.hour,
-                              minute: weatherForecast[index].date!.minute),
+                              hour: weatherForecast[index].date.hour,
+                              minute: weatherForecast[index].date.minute),
                           style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w200,
@@ -243,15 +243,14 @@ class TimeLine extends StatelessWidget {
                             physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            itemCount: getUser().allergicTypes!.length + 1,
+                            itemCount: getUser().allergicTypes.length + 1,
                             itemBuilder: (BuildContext context, int index) {
                               if (index == 2) {
                                 return const PollenWidget(
                                     pollenType: PollenType.air);
                               } else {
                                 return PollenWidget(
-                                    pollenType:
-                                        getUser().allergicTypes![index]);
+                                    pollenType: getUser().allergicTypes[index]);
                               }
                             },
                           ),
@@ -279,7 +278,7 @@ class TimeLine extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                  "${weatherForecast[index].temperature!.celsius!.ceil().toString()}°C",
+                                  "${weatherForecast[index].temperature.celsius.ceil().toString()}°C",
                                   style: const TextStyle(
                                       fontSize: 15,
                                       // fontWeight: FontWeight.w200,

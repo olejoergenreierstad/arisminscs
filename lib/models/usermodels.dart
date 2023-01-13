@@ -1,9 +1,9 @@
 import 'package:AirmineStudy/models/placemodels.dart';
 
 class User {
-  String? name;
-  String? email;
-  List<PollenType>? allergicTypes;
+  String name;
+  String email;
+  List<PollenType> allergicTypes;
 
   User({
     this.name,

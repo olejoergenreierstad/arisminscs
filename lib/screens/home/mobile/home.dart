@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../homecontroller.dart';
 
 class HomePageMainMobile extends StatefulWidget {
-  const HomePageMainMobile({super.key});
+  const HomePageMainMobile({key});
 
   @override
   State<HomePageMainMobile> createState() => _HomePageMainMobileState();
@@ -21,10 +21,25 @@ class _HomePageMainMobileState extends State<HomePageMainMobile>
 
   @override
   void initState() {
-    homecontroller.tabController =
-        TabController(initialIndex: 0, length: 3, vsync: this);
-    homecontroller.addHomePages();
+//init();
     super.initState();
+
+    homecontroller.addHomePages();
+    initControllers();
+
+    print('initstat');
+  }
+
+  @override
+  void dispose() {
+    homecontroller.tabController.dispose();
+    super.dispose();
+  }
+
+  void initControllers() {
+    homecontroller.pageController = PageController();
+    homecontroller.tabController = TabController(
+        initialIndex: 0, length: homecontroller.homepages.length, vsync: this);
   }
 
   @override
@@ -39,98 +54,104 @@ class _HomePageMainMobileState extends State<HomePageMainMobile>
                   ? MediaQuery.of(context).size.width / 3
                   : MediaQuery.of(context).size.width,
             ),
-            child: Stack(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            'assets/airMineLogo.png',
-                            height: 35,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              homecontroller.searchResultWidgets.clear();
-                              homecontroller.showSearch.value =
-                                  !homecontroller.showSearch.value;
-                            },
-                            child: Container(
-                                height: 40,
-                                width: 40,
-                                color: Colors.transparent,
-                                child: const Center(child: Icon(Icons.search))),
-                          ),
-                        ],
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Stack(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.asset(
+                              'assets/airMineLogo.png',
+                              height: 35,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                homecontroller.searchResultWidgets.clear();
+                                homecontroller.showSearch.value =
+                                    homecontroller.showSearch.value;
+                              },
+                              child: Container(
+                                  height: 40,
+                                  width: 40,
+                                  color: Colors.transparent,
+                                  child:
+                                      const Center(child: Icon(Icons.search))),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: PageView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          controller: homecontroller.pageController,
-                          itemBuilder: ((context, index) {
-                            return homecontroller.homepages[index];
-                          })),
-                    ),
-                    const MainMenu(),
-                  ],
-                ),
-                Obx(
-                  () => Visibility(
-                    visible: homecontroller.showSearch.value,
-                    child: GestureDetector(
-                      onTap: () {
-                        homecontroller.showSearch.value = false;
-                      },
-                      child: Container(
-                        color: Colors.black38,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            right: 60,
-                            top: 15,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                StdInputbox(
-                                  hint:
-                                      AppLocalizations.of(context)!.placeSearch,
-                                  onType: (p0) {},
-                                  isDest: (p0) {},
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    constraints:
-                                        const BoxConstraints(maxWidth: 400),
-                                    child: ListView.builder(
-                                        physics: const BouncingScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: homecontroller
-                                            .searchResultWidgets.length,
-                                        itemBuilder: (context, index) {
-                                          return homecontroller
-                                              .searchResultWidgets[index];
-                                        }),
+                      Flexible(
+                        child: PageView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            controller: homecontroller.pageController,
+                            itemBuilder: ((context, index) {
+                              return homecontroller.homepages[index];
+                            })),
+                      ),
+                      const MainMenu(),
+                    ],
+                  ),
+                  Obx(
+                    () => Visibility(
+                      visible: homecontroller.showSearch.value,
+                      child: GestureDetector(
+                        onTap: () {
+                          homecontroller.showSearch.value = false;
+                        },
+                        child: Container(
+                          color: Colors.black38,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              right: 60,
+                              top: 15,
+                            ),
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StdInputbox(
+                                    hint: AppLocalizations.of(context)
+                                        .placeSearch,
+                                    onType: (p0) {},
+                                    isDest: (p0) {},
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    child: Container(
+                                      constraints:
+                                          const BoxConstraints(maxWidth: 400),
+                                      child: ListView.builder(
+                                          physics:
+                                              const BouncingScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemCount: homecontroller
+                                              .searchResultWidgets.length,
+                                          itemBuilder: (context, index) {
+                                            return homecontroller
+                                                .searchResultWidgets[index];
+                                          }),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -140,7 +161,7 @@ class _HomePageMainMobileState extends State<HomePageMainMobile>
 }
 
 class MainMenu extends StatefulWidget {
-  const MainMenu({super.key});
+  const MainMenu({key});
 
   @override
   State<MainMenu> createState() => _MainMenuState();

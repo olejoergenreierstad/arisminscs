@@ -5,35 +5,35 @@ import 'package:weather/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-String getPollentypeTranslation({context, required PollenType pollentype}) {
+String getPollentypeTranslation({context, PollenType pollentype}) {
   String result = "";
   switch (pollentype) {
     case PollenType.alder:
-      result = AppLocalizations.of(context)!.pollenAlder;
+      result = AppLocalizations.of(context).pollenAlder;
       break;
     case PollenType.hazel:
-      result = AppLocalizations.of(context)!.pollenHazel;
+      result = AppLocalizations.of(context).pollenHazel;
       break;
     case PollenType.salix:
-      result = AppLocalizations.of(context)!.pollenSalix;
+      result = AppLocalizations.of(context).pollenSalix;
       break;
     case PollenType.birch:
-      result = AppLocalizations.of(context)!.pollenBirch;
+      result = AppLocalizations.of(context).pollenBirch;
       break;
     case PollenType.gras:
-      result = AppLocalizations.of(context)!.pollenGrass;
+      result = AppLocalizations.of(context).pollenGrass;
       break;
     case PollenType.mugworth:
-      result = AppLocalizations.of(context)!.pollenGrass;
+      result = AppLocalizations.of(context).pollenGrass;
       break;
     case PollenType.pitchambrosia:
-      result = AppLocalizations.of(context)!.pollenPitchambrosia;
+      result = AppLocalizations.of(context).pollenPitchambrosia;
       break;
     case PollenType.pine:
-      result = AppLocalizations.of(context)!.pollenPine;
+      result = AppLocalizations.of(context).pollenPine;
       break;
     case PollenType.air:
-      result = AppLocalizations.of(context)!.pollenAir;
+      result = AppLocalizations.of(context).pollenAir;
       break;
     default:
   }
@@ -57,11 +57,8 @@ int getTotalAirquality(List<int> qualities) {
 }
 
 Future<Widget> getWeather(
-    {required String place,
-    required int index,
-    required context,
-    required Color color}) async {
-  //WeatherFactory wf = WeatherFactory(dotenv.env['openWeather']!);
+    {String place, int index, context, Color color}) async {
+  //WeatherFactory wf = WeatherFactory(dotenv.env['openWeather']);
   WeatherFactory wf = WeatherFactory("44ddaf1f63412f021f54f93765c81a44");
 
   Widget weatericon = Icon(
@@ -81,8 +78,8 @@ Future<Widget> getWeather(
   DateTime now = DateTime.now();
 
   for (Weather element in forecast) {
-    if (element.date!.day == now.day + index) {
-      temp = element.temperature!.celsius!.ceil();
+    if (element.date.day == now.day + index) {
+      temp = element.temperature.celsius.ceil();
       weatericon = getWeatherIcon(weather: element, color: color);
     }
   }
@@ -93,10 +90,8 @@ Future<Widget> getWeather(
     children: [
       Text(
         getDay(context: context, day: index),
-        style: Theme.of(context)
-            .textTheme
-            .headline5!
-            .copyWith(color: Colors.white),
+        style:
+            Theme.of(context).textTheme.headline5.copyWith(color: Colors.white),
       ),
       const Expanded(child: SizedBox()),
       weatericon,
@@ -111,12 +106,12 @@ Future<Widget> getWeather(
   );
 }
 
-String getFormatedTime({required int hour, required int minute}) {
+String getFormatedTime({int hour, int minute}) {
   return "${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}";
 }
 
 Widget getWeatherIcon(
-    {required Weather weather, Color color = Colors.white, double size = 20}) {
+    {Weather weather, Color color = Colors.white, double size = 20}) {
   switch (weather.weatherDescription) {
     case "light rain":
       return Icon(
@@ -158,30 +153,30 @@ Widget getWeatherIcon(
   }
 }
 
-String getDay({context, required int day}) {
+String getDay({context, int day}) {
   if (day == 0) {
-    return AppLocalizations.of(context)!.dateToday;
+    return AppLocalizations.of(context).dateToday;
   } else if (day == 1) {
-    return AppLocalizations.of(context)!.dateTomorrow;
+    return AppLocalizations.of(context).dateTomorrow;
   } else {
     var now = DateTime.now();
     now = now.add(Duration(days: now.weekday + 1));
 
     switch (now.weekday) {
       case 1:
-        return AppLocalizations.of(context)!.dateMonday;
+        return AppLocalizations.of(context).dateMonday;
       case 2:
-        return AppLocalizations.of(context)!.dateTuesday;
+        return AppLocalizations.of(context).dateTuesday;
       case 3:
-        return AppLocalizations.of(context)!.dateWedensday;
+        return AppLocalizations.of(context).dateWedensday;
       case 4:
-        return AppLocalizations.of(context)!.dateThursday;
+        return AppLocalizations.of(context).dateThursday;
       case 5:
-        return AppLocalizations.of(context)!.dateFriday;
+        return AppLocalizations.of(context).dateFriday;
       case 6:
-        return AppLocalizations.of(context)!.dateSaturday;
+        return AppLocalizations.of(context).dateSaturday;
       case 7:
-        return AppLocalizations.of(context)!.dateSunday;
+        return AppLocalizations.of(context).dateSunday;
 
       default:
         return "";
@@ -189,27 +184,27 @@ String getDay({context, required int day}) {
   }
 }
 
-String getWeekDay({context, required int weekDay}) {
+String getWeekDay({context, int weekDay}) {
   if (DateTime.now().weekday == weekDay) {
-    return AppLocalizations.of(context)!.dateToday;
+    return AppLocalizations.of(context).dateToday;
   } else if (DateTime.now().weekday == weekDay + 1) {
-    return AppLocalizations.of(context)!.dateTomorrow;
+    return AppLocalizations.of(context).dateTomorrow;
   } else {
     switch (weekDay) {
       case 1:
-        return AppLocalizations.of(context)!.dateMonday;
+        return AppLocalizations.of(context).dateMonday;
       case 2:
-        return AppLocalizations.of(context)!.dateTuesday;
+        return AppLocalizations.of(context).dateTuesday;
       case 3:
-        return AppLocalizations.of(context)!.dateWedensday;
+        return AppLocalizations.of(context).dateWedensday;
       case 4:
-        return AppLocalizations.of(context)!.dateThursday;
+        return AppLocalizations.of(context).dateThursday;
       case 5:
-        return AppLocalizations.of(context)!.dateFriday;
+        return AppLocalizations.of(context).dateFriday;
       case 6:
-        return AppLocalizations.of(context)!.dateSaturday;
+        return AppLocalizations.of(context).dateSaturday;
       case 7:
-        return AppLocalizations.of(context)!.dateSunday;
+        return AppLocalizations.of(context).dateSunday;
 
       default:
         return "";
@@ -217,7 +212,7 @@ String getWeekDay({context, required int weekDay}) {
   }
 }
 
-IconData getPollenIcon({context, required PollenType pollentype}) {
+IconData getPollenIcon({context, PollenType pollentype}) {
   IconData result = Icons.air;
 
   switch (pollentype) {
@@ -254,17 +249,17 @@ IconData getPollenIcon({context, required PollenType pollentype}) {
   return result;
 }
 
-String getAirQualityDescription({required context, required int intensity}) {
+String getAirQualityDescription({context, int intensity}) {
   if (intensity >= 0 && intensity < 4) {
-    return AppLocalizations.of(context)!.airQualityExcelent;
+    return AppLocalizations.of(context).airQualityExcelent;
   } else if (intensity >= 4 && intensity < 7) {
-    return AppLocalizations.of(context)!.airQualityIntermediate;
+    return AppLocalizations.of(context).airQualityIntermediate;
   } else {
-    return AppLocalizations.of(context)!.airQualityPoor;
+    return AppLocalizations.of(context).airQualityPoor;
   }
 }
 
-LinearGradient getGradient({context, required int intensity}) {
+LinearGradient getGradient({context, int intensity}) {
   List<Color> colors = [
     const Color.fromARGB(255, 66, 226, 152),
     const Color.fromARGB(255, 56, 179, 181),

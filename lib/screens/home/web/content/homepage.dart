@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class WebLandingPage extends StatefulWidget {
   const WebLandingPage({
-    super.key,
+    key,
   });
 
   @override

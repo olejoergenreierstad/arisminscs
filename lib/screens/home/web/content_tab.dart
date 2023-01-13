@@ -4,9 +4,7 @@ class CustomTab extends StatelessWidget {
   final Color backgroundColor;
   final String title;
   const CustomTab(
-      {super.key,
-      required this.title,
-      this.backgroundColor = Colors.transparent});
+      {key, @required this.title, this.backgroundColor = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {

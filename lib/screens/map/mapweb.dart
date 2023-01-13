@@ -32,7 +32,7 @@ final citymap = {
   'vancouver': {'center': gm.LatLng(49.25, -123.1), 'population': 603502}
 };
 
-late HeatmapLayer heatmap;
+HeatmapLayer heatmap;
 
 Widget getMap() {
   String htmlId = "7";
@@ -111,7 +111,7 @@ Widget getMap() {
 }
 
 class MapMainWeb extends StatefulWidget {
-  const MapMainWeb({super.key});
+  const MapMainWeb({key});
 
   @override
   State<MapMainWeb> createState() => _MapMainWebState();
@@ -121,7 +121,7 @@ class _MapMainWebState extends State<MapMainWeb> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+    initState();
   }
 
   @override

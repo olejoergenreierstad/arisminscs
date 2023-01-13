@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class PlacesMain extends StatefulWidget {
-  const PlacesMain({super.key});
+  const PlacesMain({key});
 
   @override
   State<PlacesMain> createState() => _PlacesMainState();
@@ -24,12 +24,22 @@ class _PlacesMainState extends State<PlacesMain> {
 
   @override
   void initState() {
-    homecontroller.testplaces = getTestPlaces().obs;
     super.initState();
+    homecontroller.testplaces = getTestPlaces().obs;
+    // initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: homecontroller.testplaces.length,
+        itemBuilder: (context, index) {
+          return PlaceMainTile(
+            index: index,
+            place: homecontroller.testplaces[index],
+          );
+        });
     // List<Place> testplaces = getTestPlaces();
     return Obx(
       () => ScrollConfiguration(
@@ -55,21 +65,22 @@ class _PlacesMainState extends State<PlacesMain> {
 class PlaceMainTile extends StatefulWidget {
   final Place place;
   final int index;
-  const PlaceMainTile({super.key, required this.place, required this.index});
+  const PlaceMainTile({key, @required this.place, @required this.index});
 
   @override
   State<PlaceMainTile> createState() => _PlaceMainTileState();
 }
 
 class _PlaceMainTileState extends State<PlaceMainTile> {
-  late User user;
-  late List<int> testDataPollenIntensity;
+  User user;
+  List<int> testDataPollenIntensity;
 
   @override
   void initState() {
+    super.initState();
     testDataPollenIntensity = [];
     user = getUser();
-    super.initState();
+    // initState();
   }
 
   @override
@@ -152,7 +163,7 @@ class _PlaceMainTileState extends State<PlaceMainTile> {
                         testPollenData: testDataPollenIntensity,
                         place: widget.place,
                         index: index,
-                        pollenType: user.allergicTypes!,
+                        pollenType: user.allergicTypes,
                       );
                     }),
               ),
@@ -170,11 +181,11 @@ class PollenReportTile extends StatelessWidget {
   final int index;
   final Place place;
   const PollenReportTile(
-      {super.key,
-      required this.pollenType,
-      required this.index,
-      required this.testPollenData,
-      required this.place});
+      {key,
+      @required this.pollenType,
+      @required this.index,
+      @required this.testPollenData,
+      @required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -228,7 +239,7 @@ class PollenReportTile extends StatelessWidget {
                             height: 20,
                           );
                         } else {
-                          return SizedBox(height: 20, child: snapshot.data!);
+                          return SizedBox(height: 20, child: snapshot.data);
                         }
                       }),
                   Flexible(
@@ -270,15 +281,14 @@ class PollenReportTile extends StatelessWidget {
                           ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            itemCount: getUser().allergicTypes!.length + 1,
+                            itemCount: getUser().allergicTypes.length + 1,
                             itemBuilder: (BuildContext context, int index) {
                               if (index == 2) {
                                 return const PollenWidget(
                                     pollenType: PollenType.air);
                               } else {
                                 return PollenWidget(
-                                    pollenType:
-                                        getUser().allergicTypes![index]);
+                                    pollenType: getUser().allergicTypes[index]);
                               }
                             },
                           ),
@@ -299,7 +309,7 @@ class PollenWidget extends StatelessWidget {
   final Color color;
 
   const PollenWidget(
-      {super.key, required this.pollenType, this.color = Colors.white});
+      {key, @required this.pollenType, this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -326,7 +336,7 @@ class PollenWidget extends StatelessWidget {
                   ),
                   Text(
                     strength.nextInt(10).toString(),
-                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                    style: Theme.of(context).textTheme.headline5.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w400),
                   ),
                 ],

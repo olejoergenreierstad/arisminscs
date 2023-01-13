@@ -17,10 +17,10 @@ class HomeWebController extends GetxController {
   PageController pageController = PageController(initialPage: 0);
   RxBool setBackGroundColor = false.obs;
 
-  late List<MenuItems> subitems1;
-  late List<MenuItems> mainItems;
-  late List<dynamic> menuItems;
-  late List<Widget> pages;
+  List<MenuItems> subitems1;
+  List<MenuItems> mainItems;
+  List<dynamic> menuItems;
+  List<Widget> pages;
 
   void setWebPages() {
     // Main menu items
@@ -115,13 +115,13 @@ class HomeWebController extends GetxController {
 }
 
 class HomeController extends GetxController {
-  late TabController tabController;
-  late PageController pageController = PageController(initialPage: 0);
+  TabController tabController;
+  PageController pageController; // = PageController(initialPage: 0);
   RxBool showSearch = false.obs;
 
-  late List<Widget> homepages;
+  List<Widget> homepages;
 
-  late RxList<Widget> placeList; // = [Container()].obs,
+  RxList<Widget> placeList; // = [Container()].obs,
   RxList<Place> testplaces = [
     Place(airquality: [
       Airquality(pollenType: PollenType.air, density: 1, date: DateTime.now())

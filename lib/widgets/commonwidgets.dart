@@ -10,7 +10,7 @@ import '../functions/placefunctions.dart';
 
 class SearchBoxWidget extends StatelessWidget {
   final PlacePredictions placePredictions;
-  const SearchBoxWidget({Key? key, required this.placePredictions})
+  const SearchBoxWidget({Key key, @required this.placePredictions})
       : super(key: key);
 
   @override
@@ -80,9 +80,9 @@ class StdInputbox extends StatefulWidget {
   final bool isDestination;
   final bool isPlaceSearch;
   const StdInputbox(
-      {Key? key,
-      required this.onType,
-      required this.isDest,
+      {Key key,
+      @required this.onType,
+      @required this.isDest,
       this.hint = "",
       this.title = "",
       this.isPlaceSearch = false,
@@ -95,7 +95,7 @@ class StdInputbox extends StatefulWidget {
 }
 
 class _StdInputboxState extends State<StdInputbox> {
-  Timer? searchOnStoppedTyping;
+  Timer searchOnStoppedTyping;
   var homecontroller = Get.put(HomeController());
 
   _onChangeHandler(value) {

@@ -9,7 +9,7 @@ import 'content/infoscreens.dart';
 import 'custom_tap_bar.dart';
 
 class HomeMainWeb extends StatefulWidget {
-  const HomeMainWeb({super.key});
+  const HomeMainWeb({key});
 
   @override
   State<HomeMainWeb> createState() => _HomeMainWebState();
@@ -19,14 +19,14 @@ class _HomeMainWebState extends State<HomeMainWeb>
     with SingleTickerProviderStateMixin {
   var homeWebController = Get.put(HomeWebController());
   // = createPages(titles: titles, subiItems: subiItems)
-  late List<dynamic> subMenItems;
+  List<dynamic> subMenItems;
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  late TabController tabController;
+  TabController tabController;
   double screenHeight = 0;
   double screenWidth = 0;
-  late double topPadding;
-  late double bottomPadding;
+  double topPadding;
+  double bottomPadding;
 
   @override
   void initState() {
@@ -46,8 +46,8 @@ class _HomeMainWebState extends State<HomeMainWeb>
       key: scaffoldKey,
       body: LayoutBuilder(builder: (context, constrains) {
         if (constrains.maxWidth > 1000) {
-          if (scaffoldKey.currentState!.isEndDrawerOpen) {
-            scaffoldKey.currentState!.closeEndDrawer();
+          if (scaffoldKey.currentState.isEndDrawerOpen) {
+            scaffoldKey.currentState.closeEndDrawer();
           }
           return desktopView();
         } else {
@@ -107,7 +107,6 @@ class _HomeMainWebState extends State<HomeMainWeb>
                       child: Image.asset(
                         'assets/airMineLogo_white.png',
                         height: 50,
-                        colorBlendMode: BlendMode.modulate,
                       ),
                     ),
                   ),
@@ -145,7 +144,7 @@ class _HomeMainWebState extends State<HomeMainWeb>
                 children: [
                   Image.asset('assets/airMineLogo.png', height: 50),
                   IconButton(
-                    onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+                    onPressed: () => scaffoldKey.currentState.openEndDrawer(),
                     icon: const Icon(Icons.menu_rounded),
                     color: Colors.white,
                   ),
@@ -178,7 +177,7 @@ class HomePageTopMenu extends StatefulWidget {
   final int pageIndex;
   final Function(int jumpToPage) jumpToPage;
   const HomePageTopMenu(
-      {super.key, required this.pageIndex, required this.jumpToPage});
+      {key, @required this.pageIndex, @required this.jumpToPage});
 
   @override
   State<HomePageTopMenu> createState() => _HomePageTopMenuState();
@@ -186,7 +185,7 @@ class HomePageTopMenu extends StatefulWidget {
 
 class _HomePageTopMenuState extends State<HomePageTopMenu> {
   var homeWebcontroller = Get.put(HomeWebController());
-  late List<RxBool> hover;
+  List<RxBool> hover;
 
   @override
   void initState() {
@@ -265,13 +264,13 @@ class HomeTopPageMenuItem extends StatefulWidget {
   final bool isSubitem;
   final Color fillColor;
   final Color textColor;
-  final Color specialFillColor;
+  Color specialFillColor;
 
-  const HomeTopPageMenuItem(
-      {super.key,
-      required this.pageIndex,
-      required this.title,
-      required this.hover,
+  HomeTopPageMenuItem(
+      {key,
+      @required this.pageIndex,
+      @required this.title,
+      @required this.hover,
       this.isSubitem = false,
       this.textColor = Colors.black,
       this.specialFillColor = Colors.transparent,
@@ -282,9 +281,9 @@ class HomeTopPageMenuItem extends StatefulWidget {
 }
 
 class _HomeTopPageMenuItemState extends State<HomeTopPageMenuItem> {
-  late RxBool animateColor;
-  late Color fillColor;
-  late Color textColor;
+  RxBool animateColor;
+  Color fillColor;
+  Color textColor;
 
   var homeWebcontroller = Get.put(HomeWebController());
 
@@ -316,7 +315,7 @@ class _HomeTopPageMenuItemState extends State<HomeTopPageMenuItem> {
       return AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         decoration: BoxDecoration(
-            color: widget.specialFillColor != Colors.transparent
+            color: widget.specialFillColor = Colors.transparent == true
                 ? widget.specialFillColor
                 : fillColor,
             borderRadius: BorderRadius.circular(25)),

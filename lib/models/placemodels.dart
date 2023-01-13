@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum PollenType {
   none,
   alder,
@@ -27,7 +29,7 @@ class Place {
     this.isFavorite = false,
     this.isHome = false,
     this.order = -1,
-    required this.airquality,
+    @required this.airquality,
   });
 }
 
@@ -36,7 +38,7 @@ class Airquality {
   DateTime date;
   double density;
   Airquality(
-      {required this.pollenType, required this.density, required this.date});
+      {@required this.pollenType, @required this.density, @required this.date});
 }
 
 class PlacePredictions {
@@ -47,9 +49,9 @@ class PlacePredictions {
   final double lng;
 
   PlacePredictions({
-    required this.placeId,
-    required this.name,
-    required this.address,
+    @required this.placeId,
+    @required this.name,
+    @required this.address,
     this.lat = 0,
     this.lng = 0,
   });
